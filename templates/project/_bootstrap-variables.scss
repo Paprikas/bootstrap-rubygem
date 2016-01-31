@@ -140,7 +140,7 @@
 
 // $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
 // $font-family-serif:      Georgia, "Times New Roman", Times, serif;
-// $font-family-monospace:  Menlo, Monaco, Consolas, "Courier New", monospace;
+// $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 // $font-family-base:       $font-family-sans-serif;
 
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
@@ -186,12 +186,14 @@
 // $blockquote-small-color:  $gray-light;
 // $blockquote-font-size:    ($font-size-base * 1.25);
 // $blockquote-border-color: $gray-lighter;
+// $blockquote-border-width: .25rem;
 
 // $hr-border-color: rgba(0,0,0,.1);
 // $hr-border-width: $border-width;
 
 // $dt-font-weight: bold;
 
+// $kbd-box-shadow:         inset 0 -.1rem 0 rgba(0,0,0,.25);
 // $nested-kbd-font-weight: bold;
 
 // $list-inline-padding: 5px;
@@ -238,6 +240,8 @@
 // $btn-padding-x:                  1rem;
 // $btn-padding-y:                  .375rem;
 // $btn-font-weight:                normal;
+// $btn-box-shadow:                 inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+// $btn-active-box-shadow:          inset 0 3px 5px rgba(0,0,0,.125);
 
 // $btn-primary-color:              #fff;
 // $btn-primary-bg:                 $brand-primary;
@@ -322,9 +326,72 @@
 
 // $cursor-disabled:                not-allowed;
 
-// $custom-form-bg-color:                    #ddd;
-// $custom-form-bg-color-disabled:           #eee;
-// $custom-form-description-color-disabled:  #767676;
+// $custom-control-gutter:   1.5rem;
+// $custom-control-spacer-x: 1rem;
+// $custom-control-spacer-y: .25rem;
+
+// $custom-control-indicator-size:       1rem;
+// $custom-control-indicator-bg:         #ddd;
+// $custom-control-indicator-bg-size:    50% 50%;
+// $custom-control-indicator-box-shadow: inset 0 .25rem .25rem rgba(0,0,0,.1);
+
+// $custom-control-disabled-cursor:             $cursor-disabled;
+// $custom-control-disabled-indicator-bg:       #eee;
+// $custom-control-disabled-description-color:  #767676;
+
+// $custom-control-checked-indicator-color:      #fff;
+// $custom-control-checked-indicator-bg:         #0074d9;
+// $custom-control-checked-indicator-box-shadow: none;
+
+// $custom-control-focus-indicator-box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+
+// $custom-control-active-indicator-color:      #fff;
+// $custom-control-active-indicator-bg:         #84c6ff;
+// $custom-control-active-indicator-box-shadow: none;
+
+// $custom-checkbox-radius: $border-radius;
+// $custom-checkbox-checked-icon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgOCA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA4IDgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTYuNCwxTDUuNywxLjdMMi45LDQuNUwyLjEsMy43TDEuNCwzTDAsNC40bDAuNywwLjdsMS41LDEuNWwwLjcsMC43bDAuNy0wLjdsMy41LTMuNWwwLjctMC43TDYuNCwxTDYuNCwxeiINCgkvPg0KPC9zdmc+DQo=";
+// $custom-checkbox-indeterminate-bg: #0074d9;
+// $custom-checkbox-indeterminate-icon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iOHB4IiBoZWlnaHQ9IjhweCIgdmlld0JveD0iMCAwIDggOCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgOCA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0wLDN2Mmg4VjNIMHoiLz4NCjwvc3ZnPg0K";
+// $custom-checkbox-indeterminate-box-shadow: none;
+
+// $custom-radio-radius: 50%;
+// $custom-radio-checked-icon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgOCA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA4IDgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQsMUMyLjMsMSwxLDIuMywxLDRzMS4zLDMsMywzczMtMS4zLDMtM1M1LjcsMSw0LDF6Ii8+DQo8L3N2Zz4NCg==";
+
+// $custom-select-padding-x:          .75rem ;
+// $custom-select-padding-y:          .375rem;
+// $custom-select-indicator-padding:  1rem; // Extra padding to account for the presence of the background-image based indicator
+// $custom-select-color:         $input-color;
+// $custom-select-bg:            #fff;
+// $custom-select-bg-size:       8px 10px; // In pixels because image dimensions
+// $custom-select-indicator:     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC";
+// $custom-select-border-width:  $input-btn-border-width;
+// $custom-select-border-color:  $input-border-color;
+// $custom-select-border-radius: $border-radius;
+
+// $custom-select-focus-border-color: #51a7e8;
+// $custom-select-focus-box-shadow:   inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5);
+
+// $custom-select-sm-padding-y: .2rem;
+// $custom-select-sm-font-size: 75%;
+
+// $custom-file-height:           2.5rem;
+// $custom-file-width:            14rem;
+// $custom-file-focus-box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+
+// $custom-file-padding-x:     .5rem;
+// $custom-file-padding-y:     1rem;
+// $custom-file-line-height:   1.5;
+// $custom-file-color:         #555;
+// $custom-file-bg:            #fff;
+// $custom-file-border-width:  $border-width;
+// $custom-file-border-color:  #ddd;
+// $custom-file-border-radius: $border-radius;
+// $custom-file-box-shadow:    inset 0 .2rem .4rem rgba(0,0,0,.05);
+// $custom-file-placeholder:   "Choose file...";
+// $custom-file-button-label:  "Browse";
+// $custom-file-button-color:  $custom-file-color;
+// $custom-file-button-bg:     #eee;
 
 
 // Form validation icons
@@ -341,6 +408,7 @@
 // $dropdown-border-color:          rgba(0,0,0,.15);
 // $dropdown-border-width:          $border-width;
 // $dropdown-divider-bg:            #e5e5e5;
+// $dropdown-box-shadow:            0 6px 12px rgba(0,0,0,.175);
 
 // $dropdown-link-color:            $gray-dark;
 // $dropdown-link-hover-color:      darken($gray-dark, 5%);
@@ -359,6 +427,7 @@
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
 
+// $zindex-dropdown-backdrop:  990;
 // $zindex-navbar:            1000;
 // $zindex-dropdown:          1000;
 // $zindex-popover:           1060;
@@ -486,6 +555,9 @@
 // $tooltip-color:               #fff;
 // $tooltip-bg:                  #000;
 // $tooltip-opacity:             .9;
+// $tooltip-padding-y:           3px;
+// $tooltip-padding-x:           8px;
+// $tooltip-margin:              3px;
 
 // $tooltip-arrow-width:         5px;
 // $tooltip-arrow-color:         $tooltip-bg;
@@ -497,13 +569,19 @@
 // $popover-max-width:                   276px;
 // $popover-border-width:                $border-width;
 // $popover-border-color:                rgba(0,0,0,.2);
+// $popover-box-shadow:                  0 5px 10px rgba(0,0,0,.2);
 
 // $popover-title-bg:                    darken($popover-bg, 3%);
+// $popover-title-padding-x:             14px;
+// $popover-title-padding-y:             8px;
+
+// $popover-content-padding-x:           14px;
+// $popover-content-padding-y:           9px;
 
 // $popover-arrow-width:                 10px;
 // $popover-arrow-color:                 $popover-bg;
 
-// $popover-arrow-outer-width:           ($popover-arrow-width + 1);
+// $popover-arrow-outer-width:           ($popover-arrow-width + 1px);
 // $popover-arrow-outer-color:           fade-in($popover-border-color, 0.05);
 
 
@@ -529,8 +607,10 @@
 // $modal-title-padding:         15px;
 // $modal-title-line-height:     $line-height;
 
-// $modal-content-bg:                             #fff;
-// $modal-content-border-color:                   rgba(0,0,0,.2);
+// $modal-content-bg:               #fff;
+// $modal-content-border-color:     rgba(0,0,0,.2);
+// $modal-content-xs-box-shadow:    0 3px 9px rgba(0,0,0,.5);
+// $modal-content-sm-up-box-shadow: 0 5px 15px rgba(0,0,0,.5);
 
 // $modal-backdrop-bg:           #000;
 // $modal-backdrop-opacity:      .5;
@@ -573,6 +653,7 @@
 // $progress-bg:                 #eee;
 // $progress-bar-color:          #0074d9;
 // $progress-border-radius:      $border-radius;
+// $progress-box-shadow:         inset 0 .1rem .1rem rgba(0,0,0,.1);
 
 // $progress-bar-bg:             $brand-primary;
 // $progress-bar-success-bg:     $brand-success;
@@ -610,6 +691,7 @@
 // $thumbnail-border-width:      $border-width;
 // $thumbnail-border-color:      #ddd;
 // $thumbnail-border-radius:     $border-radius;
+// $thumbnail-box-shadow:        0 1px 2px rgba(0,0,0,.075);
 
 
 // Breadcrumbs
@@ -622,6 +704,13 @@
 // $breadcrumb-divider-color:      $gray-light;
 // $breadcrumb-active-color:       $gray-light;
 // $breadcrumb-divider:            "/";
+
+
+// Media objects
+
+// $media-margin-top:            15px;
+// $media-heading-margin-bottom:  5px;
+// $media-alignment-padding-x:   10px;
 
 
 // Carousel

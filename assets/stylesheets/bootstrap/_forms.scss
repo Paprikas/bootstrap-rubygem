@@ -11,10 +11,12 @@
   // height: $input-height;
   padding: $input-padding-y $input-padding-x;
   font-size: $font-size-base;
+  line-height: $input-line-height;
   color: $input-color;
   background-color: $input-bg;
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
   background-image: none;
+  background-clip: padding-box;
   border: $input-btn-border-width solid $input-border-color;
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius);
@@ -55,7 +57,7 @@
 }
 
 select.form-control {
-  &:not([size], [multiple]) {
+  &:not([size]):not([multiple]) {
     height: $input-height;
   }
 }
@@ -76,6 +78,18 @@ select.form-control {
 .form-control-label {
   padding: $input-padding-y $input-padding-x;
   margin-bottom: 0; // Override the `<label>` default
+}
+
+//
+// Legends
+//
+
+// For use with horizontal and inline forms, when you need the legend text to
+// be the same size as regular labels, and to align with the form controls.
+.form-control-legend {
+  padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0;
+  font-size: $font-size-base;
 }
 
 
@@ -141,18 +155,14 @@ input[type="month"] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .form-control-sm {
-  // height: $input-height-sm;
   padding: $input-padding-y-sm $input-padding-x-sm;
   font-size: $font-size-sm;
-  line-height: $line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
 
 .form-control-lg {
-  // height: $input-height-lg;
   padding: $input-padding-y-lg $input-padding-x-lg;
   font-size: $font-size-lg;
-  line-height: $line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
 
@@ -259,8 +269,8 @@ input[type="checkbox"] {
 .form-control-danger {
   padding-right: ($input-padding-x * 3);
   background-repeat: no-repeat;
-  background-position: center right ($input-height * .25);
-  background-size: ($input-height * .5) ($input-height * .50);
+  background-position: center right ($input-height / 4);
+  background-size: ($input-height / 2) ($input-height / 2);
 }
 
 // Form validation states
@@ -292,17 +302,17 @@ input[type="checkbox"] {
 
 
 // .form-control-success {
-//   background-image: url("#{$form-icon-success}");
+//   background-image: $form-icon-success;
 //   border-color: $brand-success;
 // }
 //
 // .form-control-warning {
-//   background-image: url("#{$form-icon-warning}");
+//   background-image: $form-icon-warning;
 //   border-color: $brand-warning;
 // }
 //
 // .form-control-error {
-//   background-image: url("#{$form-icon-danger}");
+//   background-image: $form-icon-danger;
 //   border-color: $brand-danger;
 // }
 

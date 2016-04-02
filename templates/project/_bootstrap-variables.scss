@@ -18,6 +18,18 @@
 // Fonts
 // Components
 
+@mixin _assert-ascending($map, $map-name) {
+//   $prev-key: null;
+//   $prev-num: null;
+//   @each $key, $num in $map {
+//     @if $prev-num != null and $prev-num >= $num {
+//       @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+//     }
+//     $prev-key: $key;
+//     $prev-num: $num;
+//   }
+}
+
 // General variable structure
 //
 // Variable format should follow the `$component-modifier-state-property` order.
@@ -58,6 +70,7 @@
 //
 // Control the default styling of most Bootstrap elements by modifying these
 // variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
 
 // $spacer:   1rem;
 // $spacer-x: $spacer;
@@ -103,7 +116,7 @@
 
 // Grid breakpoints
 //
-// Define the minimum and maximum dimensions at which your layout will change,
+// Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
 // $grid-breakpoints: (
@@ -113,6 +126,7 @@
 //   lg: 992px,
 //   xl: 1200px
 // );
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 
 
 // Grid containers
@@ -125,6 +139,7 @@
 //   lg: 940px,
 //   xl: 1140px
 // );
+@include _assert-ascending($container-max-widths, "$container-max-widths");
 
 
 // Grid columns
@@ -180,6 +195,8 @@
 // $lead-font-size:   1.25rem;
 // $lead-font-weight: 300;
 
+// $small-font-size: 80%;
+
 // $text-muted: $gray-light;
 
 // $abbr-border-color: $gray-light;
@@ -191,6 +208,8 @@
 
 // $hr-border-color: rgba(0,0,0,.1);
 // $hr-border-width: $border-width;
+
+// $mark-padding: .2em;
 
 // $dt-font-weight: bold;
 
@@ -239,7 +258,8 @@
 // For each of Bootstrap's buttons, define text, background and border color.
 
 // $btn-padding-x:                  1rem;
-// $btn-padding-y:                  .375rem;
+// $btn-padding-y:                  .5rem;
+// $btn-line-height:                1.25;
 // $btn-font-weight:                normal;
 // $btn-box-shadow:                 inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
 // $btn-active-box-shadow:          inset 0 3px 5px rgba(0,0,0,.125);
@@ -270,10 +290,10 @@
 
 // $btn-link-disabled-color:        $gray-light;
 
-// $btn-padding-x-sm:               .75rem;
+// $btn-padding-x-sm:               .5rem;
 // $btn-padding-y-sm:               .25rem;
 
-// $btn-padding-x-lg:               1.25rem;
+// $btn-padding-x-lg:               1.5rem;
 // $btn-padding-y-lg:               .75rem;
 
 // $btn-block-spacing-y:            5px;
@@ -291,13 +311,14 @@
 // Forms
 
 // $input-padding-x:                .75rem;
-// $input-padding-y:                .375rem;
+// $input-padding-y:                .5rem;
+// $input-line-height:              1.25;
 
 // $input-bg:                       #fff;
 // $input-bg-disabled:              $gray-lighter;
 
 // $input-color:                    $gray;
-// $input-border-color:             #ccc;
+// $input-border-color:             rgba(0,0,0,.15);
 // $input-btn-border-width:         $border-width; // For form controls and buttons
 // $input-box-shadow:               inset 0 1px 1px rgba(0,0,0,.075);
 
@@ -310,10 +331,10 @@
 
 // $input-color-placeholder:        #999;
 
-// $input-padding-x-sm:             .75rem;
-// $input-padding-y-sm:             .275rem;
+// $input-padding-x-sm:             .5rem;
+// $input-padding-y-sm:             .25rem;
 
-// $input-padding-x-lg:             1.25rem;
+// $input-padding-x-lg:             1.5rem;
 // $input-padding-y-lg:             .75rem;
 
 // $input-height:                   (($font-size-base * $line-height-base) + ($input-padding-y * 2));
@@ -389,10 +410,16 @@
 // $custom-file-border-color:  #ddd;
 // $custom-file-border-radius: $border-radius;
 // $custom-file-box-shadow:    inset 0 .2rem .4rem rgba(0,0,0,.05);
-// $custom-file-placeholder:   "Choose file...";
-// $custom-file-button-label:  "Browse";
 // $custom-file-button-color:  $custom-file-color;
 // $custom-file-button-bg:     #eee;
+// $custom-file-text: (
+//   placeholder: (
+//     en: "Choose file..."
+//   ),
+//   button-label: (
+//     en: "Browse"
+//   )
+// );
 
 
 // Form validation icons
@@ -405,6 +432,9 @@
 //
 // Dropdown menu container and contents.
 
+// $dropdown-min-width:             160px;
+// $dropdown-padding-y:             5px;
+// $dropdown-margin-top:            2px;
 // $dropdown-bg:                    #fff;
 // $dropdown-border-color:          rgba(0,0,0,.15);
 // $dropdown-border-width:          $border-width;
@@ -419,6 +449,8 @@
 // $dropdown-link-active-bg:        $component-active-bg;
 
 // $dropdown-link-disabled-color:   $gray-light;
+
+// $dropdown-item-padding-x:        20px;
 
 // $dropdown-header-color:          $gray-light;
 
@@ -444,6 +476,7 @@
 // $navbar-border-radius:              $border-radius;
 // $navbar-padding-x:                  $spacer;
 // $navbar-padding-y:                  ($spacer / 2);
+// $navbar-brand-padding-y:            .25rem;
 
 // $navbar-dark-color:                 rgba(255,255,255,.5);
 // $navbar-dark-hover-color:           rgba(255,255,255,.75);
@@ -528,6 +561,7 @@
 
 // $state-warning-text:             #8a6d3b;
 // $state-warning-bg:               #fcf8e3;
+// $mark-bg:                        $state-warning-bg;
 // $state-warning-border:           darken($state-warning-bg, 5%);
 
 // $state-danger-text:              #a94442;
@@ -548,6 +582,8 @@
 // $card-link-hover-color:    #fff;
 
 // $card-deck-margin:         .625rem;
+
+// $card-columns-sm-up-column-gap: 1.25rem;
 
 
 // Tooltips
@@ -586,30 +622,41 @@
 // $popover-arrow-outer-color:           fade-in($popover-border-color, .05);
 
 
-// Labels
+// Tags
 
-// $label-default-bg:            $gray-light;
-// $label-primary-bg:            $brand-primary;
-// $label-success-bg:            $brand-success;
-// $label-info-bg:               $brand-info;
-// $label-warning-bg:            $brand-warning;
-// $label-danger-bg:             $brand-danger;
+// $tag-default-bg:            $gray-light;
+// $tag-primary-bg:            $brand-primary;
+// $tag-success-bg:            $brand-success;
+// $tag-info-bg:               $brand-info;
+// $tag-warning-bg:            $brand-warning;
+// $tag-danger-bg:             $brand-danger;
 
-// $label-color:                 #fff;
-// $label-link-hover-color:      #fff;
-// $label-font-weight:           bold;
+// $tag-color:                 #fff;
+// $tag-link-hover-color:      #fff;
+// $tag-font-size:             75%;
+// $tag-font-weight:           bold;
+// $tag-padding-x:             .4em;
+// $tag-padding-y:             .25em;
 
+// $tag-pill-padding-x:        .6em;
+// Use a higher than normal value to ensure completely rounded edges when
+// customizing padding or font-size on labels.
+// $tag-pill-border-radius:    10rem;
 
 // Modals
 
 // Padding applied to the modal body
 // $modal-inner-padding:         15px;
 
+// $modal-dialog-margin:         10px;
+// $modal-dialog-sm-up-margin-y: 30px;
+
 // $modal-title-padding:         15px;
 // $modal-title-line-height:     $line-height-base;
 
 // $modal-content-bg:               #fff;
 // $modal-content-border-color:     rgba(0,0,0,.2);
+// $modal-content-border-width:     $border-width;
 // $modal-content-xs-box-shadow:    0 3px 9px rgba(0,0,0,.5);
 // $modal-content-sm-up-box-shadow: 0 5px 15px rgba(0,0,0,.5);
 
@@ -617,6 +664,8 @@
 // $modal-backdrop-opacity:      .5;
 // $modal-header-border-color:   #e5e5e5;
 // $modal-footer-border-color:   $modal-header-border-color;
+// $modal-header-border-width:   $modal-content-border-width;
+// $modal-footer-border-width:   $modal-header-border-width;
 
 // $modal-lg:                    900px;
 // $modal-md:                    600px;
@@ -684,6 +733,10 @@
 // $list-group-link-hover-color:   $list-group-link-color;
 // $list-group-link-heading-color: #333;
 
+// $list-group-item-padding-x:             1.25rem;
+// $list-group-item-padding-y:             .75rem;
+// $list-group-item-heading-margin-bottom: 5px;
+
 
 // Image thumbnails
 
@@ -693,6 +746,11 @@
 // $thumbnail-border-color:      #ddd;
 // $thumbnail-border-radius:     $border-radius;
 // $thumbnail-box-shadow:        0 1px 2px rgba(0,0,0,.075);
+
+
+// Figures
+
+// $figure-caption-font-size: 90%;
 
 
 // Breadcrumbs
@@ -720,12 +778,19 @@
 
 // $carousel-control-color:                      #fff;
 // $carousel-control-width:                      15%;
+// $carousel-control-sm-up-size:                 30px;
 // $carousel-control-opacity:                    .5;
 // $carousel-control-font-size:                  20px;
 
+// $carousel-indicators-width:                   60%;
+
+// $carousel-indicator-size:                     10px;
+// $carousel-indicator-active-size:              12px;
 // $carousel-indicator-active-bg:                #fff;
 // $carousel-indicator-border-color:             #fff;
 
+// $carousel-caption-width:                      70%;
+// $carousel-caption-sm-up-width:                60%;
 // $carousel-caption-color:                      #fff;
 
 
@@ -738,6 +803,9 @@
 
 // Code
 
+// $code-font-size:              90%;
+// $code-padding-x:              .4rem;
+// $code-padding-y:              .2rem;
 // $code-color:                  #bd4147;
 // $code-bg:                     #f7f7f9;
 
